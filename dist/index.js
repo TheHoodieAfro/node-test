@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const cors_1 = __importDefault(require("cors"));
 const debug_1 = __importDefault(require("debug"));
+const routes_1 = __importDefault(require("./routes"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const port = Number(process.env.PORT) || 4000;
@@ -15,6 +16,7 @@ app.use((0, cors_1.default)());
 app.get('/', (req, res) => {
     res.send('Express server');
 });
+(0, routes_1.default)(app);
 app.listen(port, () => {
     debuglog('Application running');
     console.log('Server is running on port ' + port);
