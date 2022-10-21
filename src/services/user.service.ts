@@ -1,0 +1,1 @@
+import UserModel, {UserDocument, UserInput} from '../models/user.model'
