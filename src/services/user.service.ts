@@ -8,3 +8,9 @@ export async function createUser(input: UserInput) {
         throw new Error(error)
     }
 }
+
+export async function findUserByEmail(email: string) {
+    try {
+        const user = await UserModel.findOne({email: email}) || null
+        return user.toJSON()
+}
