@@ -11,6 +11,9 @@ export async function createUser(input: UserInput) {
 
 export async function findUserByEmail(email: string) {
     try {
-        const user = await UserModel.findOne({email: email}) || null
-        return user.toJSON()
+        const user = await UserModel.findOne({email: email})
+        return user
+    }catch (error: any) {
+        throw new Error(error)
+    }
 }
