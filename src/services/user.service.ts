@@ -12,7 +12,7 @@ class UserService {
     
     async updateUser(id: string, input: UserInput) {
         try {
-            const user = await UserModel.findOneAndUpdate({_id: id}, input)
+            const user = await UserModel.findOneAndUpdate({_id: id}, input, {new: true})
             return user?.toJSON()
         } catch (error: any) {
             throw new Error(error)
