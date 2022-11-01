@@ -69,6 +69,23 @@ class UserController {
     }
   }
 
+  async deleteUser(req: Request, res: Response) {
+    try {
+      const userExist = await UserService.findUserById(req.params.id);
+
+      if (userExist == null) {
+        return res.status(409).send("user does not exists");
+      }
+
+      let user = await UserService.deleteUser(req.params.id)
+      return res.send(user);
+    } catch (error: any) {
+      debuglog(error);
+
+      return res.status(409).send(error.message);
+    }
+  }
+
   async login(req: Request, res: Response) {
     try {
       const user = await UserService.findUserByEmail(req.body.email);

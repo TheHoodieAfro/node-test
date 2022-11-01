@@ -1,4 +1,4 @@
-import {object, string, TypeOf} from 'zod'
+import {object, string, TypeOf, infer} from 'zod'
 
 export const createUserSchema = object({
     name: string({

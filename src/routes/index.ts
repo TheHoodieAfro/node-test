@@ -11,6 +11,8 @@ function routes(app: Express) {
     app.post('/api/users', validate(createUserSchema), UserController.createUserHandler)
     app.post('/api/sessions', UserController.login)
 
+    app.delete('api/users/:id', UserController.deleteUser)
+
     app.put('/api/users/:id', validate(createUserSchema), UserController.updateUserHandler)
 }
 

@@ -1,6 +1,7 @@
 import UserModel, {UserDocument, UserInput} from '../models/user.model'
 
 class UserService {
+
     async createUser(input: UserInput) {
         try {
             const user = await UserModel.create(input)
@@ -31,6 +32,15 @@ class UserService {
     async findUserById(id: string) {
         try {
             const user = await UserModel.findOne({_id: id})
+            return user
+        }catch (error: any) {
+            throw new Error(error)
+        }
+    }
+
+    async deleteUser(id: string) {
+        try {
+            const user = await UserModel.deleteOne({_id: id})
             return user
         }catch (error: any) {
             throw new Error(error)
